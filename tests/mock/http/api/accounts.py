@@ -1,4 +1,5 @@
 import uuid
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, Query
 
@@ -11,7 +12,7 @@ from tests.context.scenario import Scenario
 
 
 loader = MockLoader(
-    root="./tests/mock/http/data/accounts",
+    root=Path("./tests/mock/http/data/accounts"),
     logger=get_test_logger("ACCOUNTS_SERVICE_MOCK_LOADER")
 )
 
@@ -27,7 +28,7 @@ async def get_account_view(
     scenario: Scenario = Depends(get_scenario_http),
 ):
     return await loader.load_http(
-        file=f"/get_account/{scenario}.json",
+        file=f"get_account/{scenario}.json",
         model=GetAccountResponseTestSchema
     )
 
@@ -37,6 +38,6 @@ async def get_accounts_view(
     scenario: Scenario = Depends(get_scenario_http)
 ):
     return await loader.load_http(
-        file=f"/get_accounts/{scenario}.json",
+        file=f"get_accounts/{scenario}.json",
         model=GetAccountsResponseTestSchema
     )
