@@ -16,15 +16,28 @@ from tests.tools.routes import APITestRoutes
 
 class OperationsHTTPTestClient(HTTPTestClient):
     @allure.step("Get operations")
-    def get_operations_api(self, query_params: QueryParams) -> Response:
-        return self.get(APITestRoutes.OPERATIONS, params=query_params)
+    def get_operations_api(self, query_params: GetOperationsQueryTestSchema) -> Response:
+        return self.get(
+            APITestRoutes.OPERATIONS, 
+            params=QueryParams(**query_params.model_dump(mode="json", by_alias=True, exclude_none=True))
+        )
 
     @allure.step("Get operation")
     def get_operation_api(self, operation_id: uuid.UUID) -> Response:
         return self.get(f"{APITestRoutes.OPERATIONS}/{operation_id}")
 
-    def get_operations(self, query_params: GetOperationsQueryTestSchema) -> GetOperationsResponseTestSchema:
-        response = self.get_operations_api(QueryParams(**query_params.model_dump(mode="json", by_alias=True)))
+    def get_operations(
+        self, 
+        user_id: uuid.UUID,
+        card_id: uuid.UUID | None = None,
+        account_id: uuid.UUID | None = None
+    ) -> GetOperationsResponseTestSchema:
+        query_params_schema = GetOperationsQueryTestSchema(
+            user_id=user_id,
+            card_id=card_id,
+            account_id=account_id
+        )
+        response = self.get_operations_api(query_params_schema)
         response.raise_for_status()
         return GetOperationsResponseTestSchema.model_validate_json(response.text)
 
