@@ -1,0 +1,16 @@
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:28 Kafka message produced operations-service.operation-event.inbox
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:35 Kafka producer flush started
+INFO     OPERATIONS_KAFKA_PRODUCER_TEST_CLIENT:producer.py:37 Kafka producer flush finished
+INFO     OPERATIONS_HTTP_TEST_CLIENT:logger_event_hook.py:11 GET http://127.0.0.1:8002/api/v1/operations?userId=c6a12a85-0ab0-462f-960a-5c01f4126af4 - Waiting for response
+INFO     OPERATIONS_HTTP_TEST_CLIENT:logger_event_hook.py:17 GET http://127.0.0.1:8002/api/v1/operations?userId=c6a12a85-0ab0-462f-960a-5c01f4126af4 - Status 200
+INFO     OPERATIONS_ASSERTIONS:operations.py:55 Check get operations response from events
+INFO     BASE_ASSERTIONS:base.py:12 Check that "operations count" equals to 1
+INFO     OPERATIONS_ASSERTIONS:operations.py:20 Check operation from event
+INFO     BASE_ASSERTIONS:base.py:12 Check that "type" equals to PURCHASE
+INFO     BASE_ASSERTIONS:base.py:12 Check that "status" equals to IN_PROGRESS
+INFO     BASE_ASSERTIONS:base.py:12 Check that "amount" equals to 185.95
+INFO     BASE_ASSERTIONS:base.py:12 Check that "user_id" equals to c6a12a85-0ab0-462f-960a-5c01f4126af4
+INFO     BASE_ASSERTIONS:base.py:12 Check that "card_id" equals to 70e368d2-7582-41a5-84d0-7e42f0c4988f
+INFO     BASE_ASSERTIONS:base.py:12 Check that "category" equals to restaurants
+INFO     BASE_ASSERTIONS:base.py:12 Check that "created_at" equals to 2015-06-03 10:59:51.719681
+INFO     BASE_ASSERTIONS:base.py:12 Check that "account_id" equals to 3aab9475-c775-44e0-9e2b-ec2c03cd3d7b
