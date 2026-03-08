@@ -13,7 +13,6 @@ from tests.types.mapper.operations.grpc import map_operation_status, map_operati
 
 logger = get_test_logger("OPERATIONS_ASSERTIONS")
 
-
 @allure.step("Check operation from event")
 def assert_operation_from_event(
         actual: Operation,
