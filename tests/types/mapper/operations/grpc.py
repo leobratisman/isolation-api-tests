@@ -30,4 +30,4 @@ def map_operation_type(enum: OperationTestType) -> OperationType:
 
 
 def map_operation_status(enum: OperationTestStatus) -> OperationStatus:
-    return OPERATION_TYPE_MAP.get(enum)
+    return OPERATION_STATUS_MAP.get(enum)
